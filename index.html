@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Palindrome</title>
+</head>
+
+<body>
+    <div>
+        <h2>Enter a string to check if its palindrome.</h2>
+        <input id="input" type="text">
+        <button id="button">Click to check</button><br>
+        <label for="" id="output"></label>
+    </div>
+    <script type="text/javascript">
+    const _id = (id) => document['getElementById'](id)
+    const input = _id('input');
+    const button = _id('button');
+    const output = _id('output');
+    const _palindrome = () => {
+        let inputString = input.value.toLowerCase();
+        let revString = [];
+        inputString = inputString.replace(/[^a-zA-Z-]/g, ''); //removes all non-alphabet letters, including any spaces
+        for (var i = inputString.length - 1; i >= 0; i--) {
+            revString.push(inputString[i]);
+        }
+        revString = revString.join('');
+        output['innerHTML'] = ""; //get rid of any value already existing in the node;
+        output['innerHTML'] += (inputString === revString) ? "is a palindrome" : "not a palindrome";
+    }
+    button['addEventListener']('click', _palindrome, false);
+    </script>
+</body>
+
+</html>
